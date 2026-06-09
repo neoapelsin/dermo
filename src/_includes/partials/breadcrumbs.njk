@@ -1,0 +1,20 @@
+{%- set crumbs = page.url | breadcrumbs -%}
+{% if crumbs.length > 1 %}
+  <nav class="border-b border-gray-100 bg-gray-50" aria-label="Хлебные крошки">
+    <ol class="container flex flex-wrap items-center gap-2 py-3 text-sm text-gray-500">
+      {% for crumb in crumbs %}
+        <li class="flex items-center gap-2">
+          {% if crumb.last %}
+            <span aria-current="page" class="text-gray-700">{{ crumb.name }}</span>
+          {% else %}
+            <a href="{{ crumb.url }}" class="hover:text-brand">{{ crumb.name }}</a>
+            <span aria-hidden="true">/</span>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </nav>
+
+  {# JSON-LD BreadcrumbList #}
+  {% include "partials/schema-breadcrumbs.njk" %}
+{% endif %}

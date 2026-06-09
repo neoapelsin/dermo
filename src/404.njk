@@ -1,0 +1,17 @@
+---
+layout: layouts/base.njk
+permalink: /404.html
+title: Страница не найдена — 404
+robots: "noindex, follow"
+eleventyExcludeFromCollections: true
+---
+{% include "partials/header.njk" %}
+<main class="flex-1">
+  <section class="container section text-center">
+    <p class="text-6xl font-bold text-brand">404</p>
+    <h1 class="mt-4 text-2xl font-bold">Страница не найдена</h1>
+    <p class="mt-2 text-gray-600">Возможно, страница была перемещена или удалена.</p>
+    <a href="/" class="btn-primary mt-6">На главную</a>
+  </section>
+</main>
+{% include "partials/footer.njk" %}

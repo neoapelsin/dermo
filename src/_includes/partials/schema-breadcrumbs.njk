@@ -1,0 +1,17 @@
+{%- set crumbs = page.url | breadcrumbs -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {%- for crumb in crumbs %}
+    {
+      "@type": "ListItem",
+      "position": {{ loop.index }},
+      "name": {{ crumb.name | dump | safe }},
+      "item": {{ (site.url + crumb.url) | dump | safe }}
+    }{% if not loop.last %},{% endif %}
+    {%- endfor %}
+  ]
+}
+</script>

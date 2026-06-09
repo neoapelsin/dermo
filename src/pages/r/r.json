@@ -1,0 +1,6 @@
+{
+  "layout": "layouts/landing.njk",
+  "permalink": "/r/{{ page.fileSlug }}/",
+  "robots": "noindex, nofollow",
+  "sitemap": false
+}

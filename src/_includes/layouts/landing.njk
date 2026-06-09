@@ -1,0 +1,35 @@
+---
+layout: layouts/base.njk
+robots: "noindex, nofollow"
+sitemap: false
+---
+{# Посадочная для рекламы: без основной навигации, минимум подключений. #}
+<header class="border-b border-gray-100">
+  <div class="container flex items-center justify-between py-4">
+    <a href="/" class="flex items-center gap-2" aria-label="{{ site.legalName }}">
+      <img src="/assets/img/logo.svg" alt="{{ site.name }}" width="120" height="32" />
+    </a>
+    <div class="flex items-center gap-3">
+      <a href="tel:{{ site.phoneHref }}" class="text-sm font-semibold text-brand">{{ site.phone }}</a>
+      <a href="{{ site.telegram }}" class="btn-accent" rel="nofollow noopener" target="_blank">Telegram</a>
+    </div>
+  </div>
+</header>
+
+<main class="flex-1">
+  <section class="container-narrow section">
+    <h1 class="text-3xl font-bold tracking-tight md:text-4xl">{{ title }}</h1>
+
+    {{ content | safe }}
+
+    <div class="mt-8">
+      {% include "partials/lead-form.njk" %}
+    </div>
+  </section>
+</main>
+
+<footer class="border-t border-gray-100 py-6">
+  <div class="container text-center text-sm text-gray-500">
+    © {{ site.legalName }}. Все права защищены.
+  </div>
+</footer>

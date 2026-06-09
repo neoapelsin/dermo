@@ -1,0 +1,17 @@
+---
+layout: layouts/base.njk
+---
+{% include "partials/header.njk" %}
+
+<main class="flex-1">
+  {% include "partials/breadcrumbs.njk" %}
+
+  <div class="container section">
+    {# Заголовок-заглушка. Контент наполняется позже через CMS. #}
+    <h1 class="text-3xl font-bold tracking-tight md:text-4xl">{{ title }}</h1>
+
+    {{ content | safe }}
+  </div>
+</main>
+
+{% include "partials/footer.njk" %}

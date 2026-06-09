@@ -1,0 +1,28 @@
+---
+layout: layouts/base.njk
+ogType: article
+---
+{% include "partials/header.njk" %}
+
+<main class="flex-1">
+  {% include "partials/breadcrumbs.njk" %}
+
+  <article class="container-narrow section">
+    <h1 class="text-3xl font-bold tracking-tight md:text-4xl">{{ title }}</h1>
+
+    {% if date %}
+      <p class="mt-2 text-sm text-gray-500">
+        <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
+      </p>
+    {% endif %}
+
+    <div class="prose mt-6 max-w-none">
+      {{ content | safe }}
+    </div>
+  </article>
+
+  {# JSON-LD Article #}
+  {% include "partials/schema-article.njk" %}
+</main>
+
+{% include "partials/footer.njk" %}

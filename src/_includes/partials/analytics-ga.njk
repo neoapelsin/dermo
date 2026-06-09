@@ -1,0 +1,10 @@
+{# Google Analytics 4 — рендерится только при заданном ID (GA4_ID). async, без блокировки рендера. #}
+{% if site.analytics.ga4 %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.ga4 }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag("js", new Date());
+  gtag("config", "{{ site.analytics.ga4 }}");
+</script>
+{% endif %}
