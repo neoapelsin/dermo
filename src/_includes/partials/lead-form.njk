@@ -1,0 +1,35 @@
+{#
+  Форма-заявка (ЗАГЛУШКА).
+  Реального сабмита на бэкенд нет — обработка целиком в src/assets/ts/main.ts:
+  клиентская валидация + визуальное подтверждение + событие в аналитику.
+  TODO(integration): подключить реальный обработчик (Netlify Forms / Formspree / эндпоинт).
+  Состав полей — заглушки, легко меняются.
+#}
+<form class="space-y-4 rounded-lg border border-gray-200 bg-white p-6 shadow-sm" data-lead-form novalidate>
+  <h2 class="text-xl font-semibold">Оставить заявку</h2>
+  <p class="text-sm text-gray-500">Перезвоним и рассчитаем стоимость доставки.</p>
+
+  <div>
+    <label class="field-label" for="lead-cargo">Что везёте</label>
+    <input class="field-input" id="lead-cargo" name="cargo" type="text" placeholder="Напр.: керамическая плитка" data-validate="required" autocomplete="off" />
+    <p class="field-error" data-error-for="cargo">Укажите, что нужно перевезти.</p>
+  </div>
+
+  <div>
+    <label class="field-label" for="lead-volume">Объём / вес</label>
+    <input class="field-input" id="lead-volume" name="volume" type="text" placeholder="Напр.: 20 т / 30 м³" data-validate="required" autocomplete="off" />
+    <p class="field-error" data-error-for="volume">Укажите объём или вес груза.</p>
+  </div>
+
+  <div>
+    <label class="field-label" for="lead-contact">Телефон или Telegram</label>
+    <input class="field-input" id="lead-contact" name="contact" type="text" placeholder="+7 (___) ___-__-__ или @username" data-validate="contact" autocomplete="off" />
+    <p class="field-error" data-error-for="contact">Укажите корректный телефон или Telegram.</p>
+  </div>
+
+  <button type="submit" class="btn-primary w-full">Отправить заявку</button>
+
+  <p class="hidden rounded-md bg-green-50 px-4 py-3 text-sm text-green-700" data-form-success role="status">
+    Заявка отправлена! Мы свяжемся с вами в ближайшее время.
+  </p>
+</form>

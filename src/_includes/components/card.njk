@@ -1,0 +1,7 @@
+{# Переиспользуемая карточка (для списков кейсов/блога/товаров). #}
+{% macro card(title, url, text) %}
+  <a href="{{ url }}" class="block rounded-lg border border-gray-200 p-6 shadow-sm transition hover:border-brand hover:shadow-md">
+    <h3 class="text-lg font-semibold text-gray-900">{{ title }}</h3>
+    {% if text %}<p class="mt-2 text-sm text-gray-600">{{ text }}</p>{% endif %}
+  </a>
+{% endmacro %}

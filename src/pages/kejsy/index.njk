@@ -1,0 +1,19 @@
+---
+permalink: /kejsy/
+title: Кейсы
+description: Кейсы выполненных проектов ООО ТЛК БАРС.
+---
+{% from "components/card.njk" import card %}
+{% from "components/empty-state.njk" import emptyState %}
+{% set items = collections.kejsy %}
+<div class="mt-6">
+  {% if items and items.length %}
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {% for item in items %}
+        {{ card(item.data.title, item.url, item.data.description) }}
+      {% endfor %}
+    </div>
+  {% else %}
+    {{ emptyState("Кейсы появятся позже.") }}
+  {% endif %}
+</div>

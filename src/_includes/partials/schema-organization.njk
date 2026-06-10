@@ -1,0 +1,24 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": {{ site.legalName | dump | safe }},
+  "alternateName": {{ site.name | dump | safe }},
+  "url": {{ site.url | dump | safe }},
+  "logo": {{ (site.url + "/assets/img/logo.svg") | dump | safe }},
+  "email": {{ site.email | dump | safe }},
+  "telephone": {{ site.phone | dump | safe }},
+  "taxID": {{ site.inn | dump | safe }},
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "RU",
+    "streetAddress": {{ site.address | dump | safe }}
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": {{ site.phone | dump | safe }},
+    "contactType": "sales",
+    "availableLanguage": ["Russian"]
+  }
+}
+</script>

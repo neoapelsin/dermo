@@ -1,0 +1,76 @@
+<header class="sticky top-0 z-40 border-b border-gray-100 bg-white/95 backdrop-blur">
+  <div class="container flex items-center justify-between gap-4 py-3">
+    <a href="/" class="flex shrink-0 items-center gap-2" aria-label="{{ site.legalName }}">
+      <img src="/assets/img/logo.svg" alt="{{ site.name }}" width="120" height="32" />
+    </a>
+
+    {# Десктоп-навигация #}
+    <nav class="hidden lg:block" aria-label="Основная навигация">
+      <ul class="flex items-center gap-1">
+        {% for item in navigation %}
+          <li class="group relative">
+            <a
+              href="{{ item.url }}"
+              class="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-brand{% if page.url == item.url %} text-brand{% endif %}"
+            >
+              {{ item.title }}
+              {% if item.children %}<span aria-hidden="true">▾</span>{% endif %}
+            </a>
+            {% if item.children %}
+              <ul class="invisible absolute left-0 top-full z-50 min-w-56 rounded-md border border-gray-100 bg-white py-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100">
+                {% for child in item.children %}
+                  <li>
+                    <a href="{{ child.url }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand">{{ child.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="hidden items-center gap-3 lg:flex">
+      <a href="tel:{{ site.phoneHref }}" class="text-sm font-semibold text-brand">{{ site.phone }}</a>
+      <a href="{{ site.telegram }}" class="btn-accent" rel="nofollow noopener" target="_blank">Telegram</a>
+    </div>
+
+    {# Кнопка мобильного меню #}
+    <button
+      type="button"
+      class="inline-flex items-center rounded-md p-2 text-gray-700 lg:hidden"
+      data-menu-toggle
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Открыть меню"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+  </div>
+
+  {# Мобильное меню #}
+  <nav id="mobile-menu" class="hidden border-t border-gray-100 lg:hidden" data-mobile-menu aria-label="Мобильная навигация">
+    <ul class="container flex flex-col gap-1 py-3">
+      {% for item in navigation %}
+        <li>
+          <a href="{{ item.url }}" class="block rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">{{ item.title }}</a>
+          {% if item.children %}
+            <ul class="ml-3 border-l border-gray-100 pl-3">
+              {% for child in item.children %}
+                <li><a href="{{ child.url }}" class="block rounded-md px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-50">{{ child.title }}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+      <li class="mt-2 flex items-center gap-3 px-3">
+        <a href="tel:{{ site.phoneHref }}" class="text-sm font-semibold text-brand">{{ site.phone }}</a>
+        <a href="{{ site.telegram }}" class="btn-accent" rel="nofollow noopener" target="_blank">Telegram</a>
+      </li>
+    </ul>
+  </nav>
+</header>

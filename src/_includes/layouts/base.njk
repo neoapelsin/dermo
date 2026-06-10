@@ -1,0 +1,45 @@
+{%- set pageTitle = title or site.defaultTitle -%}
+{%- set pageDescription = description or site.defaultDescription -%}
+{%- set pageRobots = robots or "index, follow" -%}
+{%- set canonicalUrl = site.url + page.url -%}
+{%- set ogImageUrl = (ogImage or site.defaultOgImage) | absoluteUrl(site.url) -%}
+<!doctype html>
+<html lang="{{ site.lang }}"{% if site.analytics.yandexMetrika %} data-ym-id="{{ site.analytics.yandexMetrika }}"{% endif %}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{{ pageTitle }}</title>
+    <meta name="description" content="{{ pageDescription }}" />
+    <meta name="robots" content="{{ pageRobots }}" />
+    <link rel="canonical" href="{{ canonicalUrl }}" />
+
+    {# Open Graph #}
+    <meta property="og:type" content="{{ ogType or 'website' }}" />
+    <meta property="og:title" content="{{ pageTitle }}" />
+    <meta property="og:description" content="{{ pageDescription }}" />
+    <meta property="og:url" content="{{ canonicalUrl }}" />
+    <meta property="og:image" content="{{ ogImageUrl }}" />
+    <meta property="og:locale" content="{{ site.locale }}" />
+
+    {# Верификация поисковых систем (рендерится только если задано в конфиге) #}
+    {% if site.verification.yandex %}<meta name="yandex-verification" content="{{ site.verification.yandex }}" />{% endif %}
+    {% if site.verification.google %}<meta name="google-site-verification" content="{{ site.verification.google }}" />{% endif %}
+
+    <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+
+    {# JSON-LD Organization — на всех страницах #}
+    {% include "partials/schema-organization.njk" %}
+
+    {# Счётчики аналитики (условно, по наличию ID) #}
+    {% include "partials/analytics-yandex.njk" %}
+    {% include "partials/analytics-ga.njk" %}
+  </head>
+  <body class="flex min-h-screen flex-col bg-white font-sans text-gray-900 antialiased">
+    {{ content | safe }}
+
+    {# Клиентский скрипт: меню + заглушки форм. defer — без блокировки рендера. #}
+    <script src="/assets/js/main.js" defer></script>
+  </body>
+</html>

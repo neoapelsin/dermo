@@ -1,0 +1,6 @@
+{
+  "layout": "layouts/article.njk",
+  "tags": "kejsy",
+  "permalink": "/kejsy/{{ page.fileSlug }}/",
+  "sitemap": true
+}

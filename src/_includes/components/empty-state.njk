@@ -1,0 +1,6 @@
+{# Заглушка пустого списка (контент добавляется позже через CMS). #}
+{% macro emptyState(text) %}
+  <div class="rounded-lg border border-dashed border-gray-300 bg-gray-50 p-10 text-center text-gray-500">
+    {{ text or "Пока нет записей. Контент появится позже." }}
+  </div>
+{% endmacro %}

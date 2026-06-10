@@ -1,0 +1,58 @@
+# Конфигурация Decap CMS.
+# Бэкенд — git-gateway (ЗАГЛУШКА). Выбор провайдера авторизации отложен:
+# для работы потребуется включить Netlify Identity + Git Gateway
+# (или заменить backend на github/gitlab с настройкой OAuth).
+backend:
+  name: git-gateway
+  branch: main
+
+# Папка для загружаемых через CMS медиафайлов.
+media_folder: "src/assets/img/uploads"
+public_folder: "/assets/img/uploads"
+
+locale: "ru"
+
+# Структура коллекций под будущий контент. На старте коллекции могут быть пустыми.
+collections:
+  - name: "blog"
+    label: "Блог"
+    label_singular: "Статья"
+    folder: "src/blog"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Описание", name: "description", widget: "text", required: false }
+      - { label: "Дата", name: "date", widget: "datetime" }
+      - { label: "OG-изображение", name: "ogImage", widget: "image", required: false }
+      - { label: "Текст", name: "body", widget: "markdown" }
+
+  - name: "kejsy"
+    label: "Кейсы"
+    label_singular: "Кейс"
+    folder: "src/kejsy"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Описание", name: "description", widget: "text", required: false }
+      - { label: "Дата", name: "date", widget: "datetime" }
+      - { label: "OG-изображение", name: "ogImage", widget: "image", required: false }
+      - { label: "Текст", name: "body", widget: "markdown" }
+
+  - name: "tovary"
+    label: "Товарные страницы"
+    label_singular: "Товарная страница"
+    folder: "src/pages/tovary"
+    create: true
+    slug: "{{slug}}"
+    extension: "njk"
+    format: "frontmatter"
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Описание", name: "description", widget: "text", required: false }
+      - { label: "Содержимое", name: "body", widget: "markdown", required: false }

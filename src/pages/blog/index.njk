@@ -1,0 +1,19 @@
+---
+permalink: /blog/
+title: Блог
+description: Блог ООО ТЛК БАРС — статьи о логистике и доставке грузов.
+---
+{% from "components/card.njk" import card %}
+{% from "components/empty-state.njk" import emptyState %}
+{% set items = collections.blog %}
+<div class="mt-6">
+  {% if items and items.length %}
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {% for item in items %}
+        {{ card(item.data.title, item.url, item.data.description) }}
+      {% endfor %}
+    </div>
+  {% else %}
+    {{ emptyState("Статьи появятся позже.") }}
+  {% endif %}
+</div>

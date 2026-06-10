@@ -1,0 +1,14 @@
+{# Контакты — реквизиты-заглушки + форма заявки. #}
+<div class="mt-8 grid gap-8 lg:grid-cols-2">
+  <div class="space-y-3 text-gray-700">
+    <p><span class="font-semibold">Телефон:</span> <a href="tel:{{ site.phoneHref }}" class="text-brand">{{ site.phone }}</a></p>
+    <p><span class="font-semibold">E-mail:</span> <a href="mailto:{{ site.email }}" class="text-brand">{{ site.email }}</a></p>
+    <p><span class="font-semibold">Telegram:</span> <a href="{{ site.telegram }}" class="text-brand" rel="nofollow noopener" target="_blank">{{ site.telegram }}</a></p>
+    <p><span class="font-semibold">Адрес:</span> {{ site.address }}</p>
+    <p class="text-sm text-gray-500">{{ site.legalName }} · ИНН {{ site.inn }} · ОГРН {{ site.ogrn }}</p>
+  </div>
+
+  <div>
+    {% include "partials/lead-form.njk" %}
+  </div>
+</div>
